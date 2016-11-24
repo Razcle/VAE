@@ -95,7 +95,6 @@ class VariationalAutoencoder(object):
         return weights
 
     def _build_model(self, weights, biases, kind):
-        print(kind)
 
         if kind == 'gen':
             input_ = self.ltnt_samp
@@ -123,7 +122,8 @@ class VariationalAutoencoder(object):
         # Loss due to reconstruction error log P(data|latent))
         rec_loss = 0.5 * (tf.reduce_sum(
                           self.gen_log_sigma_sq +
-                          tf.div(tf.square(self.input_ - self.gen_mean), gen_covs), 1))
+                          tf.div(tf.square(self.input_ - self.gen_mean),
+                                 gen_covs), 1))
 
         # Loss due to KL penalisation term
         gen_loss = -0.5 * tf.reduce_sum(1 + self.rec_log_sigma_sq
@@ -141,6 +141,8 @@ class VariationalAutoencoder(object):
     def generate(self, latent_mean=None):
         if latent_mean is None:
             latent_mean = np.random.normal(size=[1, self.network_architecture['latent_dim']])
+
+
         return self.sess.run(self.gen_mean,
                              feed_dict={self.ltnt_samp: latent_mean})
 

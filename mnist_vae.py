@@ -10,7 +10,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 import sys
 
 # Get Data
-mnist, _ = input_data.read_data_sets('../Data/', one_hot=True).train.next_batch(10000)
+mnist, _ = input_data.read_data_sets('MNIST_data/', one_hot=True).train.next_batch(10000)
 
 # Create a VAE and Train
 network_architecture = {"hdn_dim": 500, 'latent_dim': 2, 'input_dim': 784}
