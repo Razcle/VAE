@@ -1,7 +1,7 @@
 """
  This Experiment applies the variational auto-encoder to the Mnist data-set
  and records the lower-bound as a function of iteration number. It also saves
- the final model and generates a sample of a face.
+ the final model and generates a sample of digits.
 """
 import utilities as util
 from matplotlib import pyplot as plt
